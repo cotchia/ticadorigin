@@ -1,11 +1,11 @@
  
- use "ticadorigin.dta", clear
+use "ticadorigin.dta", clear
 
 drop if year <=1965
 
 
 
-***Table 4
+***Table 5
 
 
 itsa cum_oda ,  replace figure posttrend  prais rhotype(tscorr) vce(robust)  treat(1) trperiod(2013;2019)  contid(2 3 4 5 6)
@@ -34,13 +34,13 @@ adds("Durbin–Watson statistic (original)", `e(dw_0)', ///
 
 
 
-global control fid  tot   
+global control fid  tot  controlcorr regquality inflation 
 
 itsa cum_oda $control,  replace figure posttrend  prais rhotype(tscorr) vce(robust)  treat(1) trperiod(2013;2019)  contid(2 3 4 5 6)
 
 outreg2 using "TableX03.xls", bdec(3) label se excel ///
 adds("Durbin–Watson statistic (original)", `e(dw_0)', ///
-"Durbin–Watson statistic (transformed)", `e(dw)' )  replace  
+"Durbin–Watson statistic (transformed)", `e(dw)' )  append  
 
 
 

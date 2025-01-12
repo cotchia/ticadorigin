@@ -3,23 +3,26 @@
  
  use "ticadorigin.dta", clear
  
- streamplot grants year , by(region) smooth(6) palette(CET C7, reverse) ///
-	title("") xtitle("")  xlabel(1960(5)2021, labsize(vsmall)) /// ///
+ streamplot oda year , by(region) smooth(6) palette(CET C7, reverse) ///
+	title("a. ODA") xtitle("")  xlabel(1960(5)2021, labsize(vsmall)) /// ///
+	ylabsize(1.8) lc(black) lw(0.04)  percent format(%3.2f) offset(0.2) ylabc(palette)
+	graph save oda01.gph, replace
+	
+	streamplot grants year , by(region) smooth(6) palette(CET C7, reverse) ///
+	title("b. Grants") xtitle("")  xlabel(1960(5)2021, labsize(vsmall)) /// ///
 	ylabsize(1.8) lc(black) lw(0.04)  percent format(%3.2f) offset(0.2) ylabc(palette) 
 	graph save grants01.gph, replace
 
 	
-   streamplot oda year , by(region) smooth(6) palette(CET C7, reverse) ///
-	title("") xtitle("")  xlabel(1960(5)2021, labsize(vsmall)) /// ///
-	ylabsize(1.8) lc(black) lw(0.04)  percent format(%3.2f) offset(0.2) ylabc(palette)
-	graph save oda01.gph, replace
+
 	
 	
  streamplot tech year , by(region) smooth(6) palette(CET C7, reverse) ///
-	title("") xtitle("")  xlabel(1960(5)2021, labsize(vsmall)) /// ///
+	title("") xtitle("c. Technical assistance")  xlabel(1960(5)2021, labsize(vsmall)) /// ///
 	ylabsize(1.8) lc(black) lw(0.04)  percent format(%3.2f) offset(0.2) ylabc(palette) ///
  
 	graph save tech01.gph, replace
+	
 	
  
  
